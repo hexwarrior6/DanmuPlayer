@@ -1,7 +1,7 @@
 import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import axios, { type AxiosError, type AxiosResponse } from 'axios';
 
-interface ChannelUrlResponse {
+export interface ChannelUrlResponse {
   url: string;
 }
 
@@ -53,7 +53,7 @@ export class TvService {
 
   private handleAxiosError(axiosError: AxiosError): ChannelUrlResponse {
     const location = axiosError.response?.headers?.location;
-
+    
     if (location && typeof location === 'string') {
       return { url: location };
     }
